@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Scientific Foundations - Edit Session{% endblock %}
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Sessions</h1>
+</div>
+<div class="col-md-4">
+<div class='form-group'>
+	<label for="themes">Select a Theme</label>
+	<select class="form-control" id="themes">
+		<option></option>
+	</select>
+	<br>
+	<label for="threads">Or Select a Thread</label>
+	<select class="form-control" id="threads">
+		<option></option>
+	</select>
+	<br>
+	<label for="session-list">Select a Session to Edit</label>
+	<select class="form-control" id="sessions-list">
+		<option>Select a theme or thread first</option>
+	</select>
+	
+</div>
+<h2 class="theme-or-thread-title"></h2>
+<form method="post" class="form" role="form">
+	<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+	<div class="col-md-12">
+		<form method="post" class="form" role="form">
+			<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+			<div class="form-group">{{ form.session_id(class="form-control") }}</div>
+			<div class="form-group">{{ form.title.label }} {{ form.title(class="form-control") }}</div>
+			<div class="form-group">{{ form.pedagogy.label }} {{ form.pedagogy(class="form-control") }}</div>
+			<div class="form-group">{{ form.thread.label }} {{ form.thread(class="form-control") }}</div>
+			<div class="form-group">{{ form.theme.label }} {{ form.theme(class="form-control") }}</div>
+			<div class="form-group">{{ form.date.label }} {{ form.date(id="datepicker", class="form-control") }}</div>
+			<div class="form-group">{{ form.time.label }} {{ form.time(class="form-control") }}</div>
+			{{ form.submit }}
+
+		</form>
+	</div>
+</form>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src={{ url_for('static', filename = 'js/edit_session.js') }}></script>
+<script>
+$(function() {
+    
+	date = new Date(2015, 8, 1);
+	$("#datepicker").datepicker({defaultDate: date});
+  });
+  </script>
+{% endblock %}

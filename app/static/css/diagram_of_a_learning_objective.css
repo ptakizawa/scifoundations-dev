@@ -1,0 +1,23 @@
+.learning-objective {
+	font-size: 1.5em;
+}
+
+a.learning-objective-condition {
+	text-decoration: underline;
+	color: red;
+}
+
+a.learning-objective-who {
+	text-decoration: underline;
+	color: blue;
+}
+
+a.learning-objective-verb {
+	text-decoration: underline;
+	color: green;
+}
+
+a.learning-objective-content {
+	text-decoration: underline;
+	color: purple;
+}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Scientific Foundations - Edit Thread Goals{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Course Goals</h1>
+</div>
+<div class="col-md-4">
+<div class='form-group'>
+	<label for="threads">Select a Thread</label>
+	<select class="form-control" id="threads">
+		<option></option>
+	</select>
+</div>
+<h2 class="thread-title"></h2>
+<form method="post" class="form" role="form">
+	<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+</form>
+
+</div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src={{ url_for('static', filename = 'js/edit_thread_goals.js') }}></script>
+{% endblock %}
