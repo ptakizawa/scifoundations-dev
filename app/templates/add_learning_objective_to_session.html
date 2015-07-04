@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Scientific Foundations - Sessions{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Add Learning Objective to Session</h1>
+</div>
+<div class="col-md-5">
+	<div id="learning-objective">
+	{% if objective.free_form_version != None %}
+	    {{ objective.free_form_version }}
+	{% else %}
+	    {{ objective.conditions }}, {{ objective.who }} should be able to {{ objective.verb }} {{ objective.content }}
+	{% endif %}
+	</div>
+	<hr />
+	<h3>Add objective to a session</h3>
+	<form method="post" class="form" role="form">
+		<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+		<div class='form-group'>{{ form.objective_id }}</div>
+		<div class='form-group'>{{ form.session_id }}</div>
+		<div class='form-group'>{{ form.theme.label}} {{form.theme(class="form-control") }} </div>
+		<div class='form-group'>{{ form.thread.label}} {{form.thread(class="form-control") }}</div>
+		<div class='form-group'>{{ form.session.label}} {{form.session(class="form-control") }}</div>
+		{{ form.submit }}
+	</form>
+
+	
+</div>
+
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src={{ url_for('static', filename = 'js/add_learning_objective_to_session.js') }}></script>
+{% endblock %}

@@ -49,6 +49,7 @@ $('document').ready(function(){
 						$('#pedagogy').val(value['pedagogy']);
 						$('#thread').val(value['thread']);
 						$('#theme').val(value['theme']);
+						$('#summary').val(value['summary']);
 						$('#datepicker').val(formatted_date);
 						$('#time').val(hour);
 					}

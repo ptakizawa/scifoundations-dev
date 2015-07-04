@@ -17,9 +17,10 @@
 	</div>
 	<hr />
 	<h3>Options</h3>
-	<p><a class="btn btn-primary" href="{{ url_for('main.add_learning_objective_to_session', id = objective.id ) }}" role="button">Link the Learning Objective to a Session »</a></p>
-	<p><a class="btn btn-primary" href="{{ url_for('main.build_learning_objective') }}" role="button">Build another Learning Objective »</a></p>
-	<p><a class="btn btn-primary" href="{{ url_for('main.enter_learning_objective') }}" role="button">Enter another Learning Objective »</a></p>
+	<p><a class="btn btn-primary" href="{{ url_for('main.enter_learning_objective_for_session', id=session.id) }}" role="button">Enter another Learning Objective for This Session »</a></p>
+	<p><a class="btn btn-primary" href="{{ url_for('main.enter_question_for_learning_objective', id=objective.id) }}" role="button">Enter a Question for This Learning Objective »</a></p>
+
+	
 </div>
 
 {% endblock %}

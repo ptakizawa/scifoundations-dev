@@ -14,21 +14,19 @@
 	<div class="container">
 		<h2>Guide to Writing Learning Objectives</h2>
 		<p>A learning objective is a <b>clear</b> and <b>specific</b> statement of <b>measurable</b> student behavior. The objective needs to be clear and specific so that students understand what they should be able to do after a session. The objective should be measurable to allow for assessment of whether a student has met the objective.</p>
-		<a class="btn btn-primary btn-lg" href= "/enter-learning-objective" role="button">Build a Learning Objective »</a>	
+		<a class="btn btn-primary btn-lg" href= "{{ url_for('main.build_learning_objective') }}" role="button">Build a Learning Objective »</a>	
 	</div>	
 </div>
 <div class="container">
 	<div class="row">
 		<div class="col-md-4">
 			<h2>Learning Objective vs. Learning Outcome</h2>
-			<p>Learning objectives are often confused for learning outcomes, but there are several important differences A learning outcome is a broad goal of what a student should be able to do at the end of a session or course. They are usually written in general terms, and consequently are often not measurable or assessible. In contrast, learning objectives are written in specific terms and allow for assessment of whether the objective has been met. Learning outcomes are supported and defined by one or more learning objectives.</p>
-			<a class="btn btn-default" href="/objective-vs-outcome" role="button">View details »</a>
-			
+			<p>Learning objectives are often confused for learning outcomes, but there are several important differences. A learning outcome is a broad goal of what a student should be able to do at the end of a session or course. They are usually written in general terms, and consequently are often not measurable or assessible. In contrast, learning objectives are written in specific terms and allow for assessment of whether the objective has been met. Learning outcomes are supported and defined by one or more learning objectives.</p>	
 		</div>
 		<div class="col-md-4">
 			<h2>Diagram of a Learning Objective</h2>
 			<p>A well-written learning objective contains several common elements that make the objective clear and specfic and allow the objective to be assessed.</p>
-			<a class="btn btn-default" href="/diagram-of-a-learning-objective" role="button">View details »</a>
+			<a class="btn btn-default" href="{{ url_for('main.diagram_of_a_learning_objective') }}" role="button">View details »</a>
 		<div>
 	</div>
 </div>

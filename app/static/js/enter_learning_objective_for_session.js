@@ -1,5 +1,5 @@
-$('document').ready(function(){
-	$.ajax({
+$('document').ready(function() {
+    $.ajax({
 		type: 'GET',
 		url: '/session-data',
 		dataType: 'JSON',
@@ -45,8 +45,7 @@ $('document').ready(function(){
 					}					
 				});
 			}
-		
 		}
-		
 	});
+
 });

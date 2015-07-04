@@ -165,13 +165,16 @@ class AnonymousUser(AnonymousUserMixin):
 	def is_administer(self):
 		return False
 		
+	def is_authenticated(self):
+	    return False
+		
 class Permission:
-	FOLLOW = 0x01
-	COMMENT = 0x02
-	WRITE_ARTICLES = 0x04
-	WRITE_QUESTIONS_AND_OBJECTIVES = 0x08
-	WRITE_GOALS = 0x10
-	ADMINISTER = 0x80
+    FOLLOW = 0x01
+    COMMENT = 0x02
+    WRITE_ARTICLES = 0x04
+    WRITE_QUESTIONS_AND_OBJECTIVES = 0x08
+    WRITE_GOALS = 0x10
+    ADMINISTER = 0x80
 	
 class ThreadGoal(db.Model):
 	__tablename__ = 'thread_goals'
@@ -226,6 +229,7 @@ class Session(db.Model):
 	thread = db.Column(db.String(64))
 	theme = db.Column(db.String(64))
 	integrated_course = db.Column(db.String(64))
+	summary = db.Column(db.Text())
 	
 	@classmethod
 	def sessions_dict(cls_obj):
@@ -241,6 +245,7 @@ class Session(db.Model):
 			session_dict['thread'] = session.thread
 			session_dict['theme'] = session.theme
 			session_dict['integrated_course'] = session.integrated_course
+			session_dict['summary'] = session.summary
 			session_list.append(session_dict)
 		sessions_dict['sessions'] = session_list
 		sessions_dict['themes'] = current_app.config['THEMES']
@@ -255,6 +260,7 @@ class LearningObjective(db.Model):
 	verb = db.Column(db.String(32))
 	content = db.Column(db.Text())
 	conditions = db.Column(db.Text())
+	free_form_version = db.Column(db.Text())
 	taxonomy = db.Column(db.String(64))
 	integrated_course = db.Column(db.String(64))
 	session_id = db.Column(db.Integer, db.ForeignKey('sessions.id'))	
@@ -266,8 +272,13 @@ class LearningObjective(db.Model):
 class Question(db.Model):
 	__tablename__ = 'questions'
 	id = db.Column(db.Integer, primary_key=True)
+        narrative = db.Column(db.Text())
 	stem = db.Column(db.Text())
 	correct_response = db.Column(db.String(128))
+        distractor_1 = db.Column(db.String(128))
+        distractor_2 = db.Column(db.String(128))
+        distractor_3 = db.Column(db.String(128))
+        image_url = db.Column(db.String(128))
 	learning_objective_id = db.Column(db.Integer, db.ForeignKey('learning_objectives.id'))
 	session_id = db.Column(db.Integer, db.ForeignKey('sessions.id'))
 	integrated_course = db.Column(db.String(64))
@@ -294,7 +305,6 @@ class Verb(db.Model):
 				verb_list.append(verb_dict)
 			verbs_dict[taxonomy] = verb_list
 		return verbs_dict
-			
 	
 login_manager.anonymous_user = AnonymousUser
 

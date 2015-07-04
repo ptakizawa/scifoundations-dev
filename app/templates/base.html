@@ -26,6 +26,14 @@
 				{% if current_user.is_authenticated() %}
                 <li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li>
                 {% endif %}
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learning Objectives <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('main.guide_to_writing_learning_objectives') }}">Guide to Learning Objectives</a></li>
+                        <li><a href="{{ url_for('main.diagram_of_a_learning_objective') }}">Diagram of a Learning Objective</a></li>	
+                        <li><a href="{{ url_for('main.build_learning_objective') }}">Build a Learning Objective</a></li>    
+                        <li><a href="{{ url_for('main.enter_learning_objective') }}">Enter a Learning Objective</a></li>
+                    </ul>
+                </li>
             </ul>
 			<ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated() %}

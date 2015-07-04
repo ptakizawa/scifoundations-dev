@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}SciFoundations - Enter Question{% endblock %}
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Enter a Question for Learning Objective</h1>
+</div>
+<div class="col-md-5">
+    <span class="learning-objective">
+        {% if objective.free_form_version != None %}
+            {{ objective.free_form_version }}
+        {% else %}
+            {{ objective.conditions }}, {{ objective.who }} {{ objective.verb }} {{ objective.content }}
+        {% endif %}
+	<form method="post" class="form" role="form" enctype="multipart/form-data">
+		{{ form.csrf_token }}
+		<div class="form-group">{{ form.objective(value="{{ objective.id }}") }}
+		<div class="form-group">{{ form.narrative.label }} {{ form.narrative(class="form-control") }}</div>
+		<div class="form-group">{{ form.stem.label }} {{ form.stem(class="form-control") }}</div>
+		<div class="form-group">{{ form.correct_answer.label }} {{ form.correct_answer(class="form-control") }}</div>
+		<div class="form-group">{{ form.distractor_1.label }} {{ form.distractor_1(class="form-control") }}</div>
+		<div class="form-group">{{ form.distractor_2.label }} {{ form.distractor_2(class="form-control") }}</div>
+		<div class="form-group">{{ form.distractor_3.label }} {{ form.distractor_3(class="form-control") }}</div>
+        {{ form.image.label }} {{form.image(class="form-control") }}
+		{{ form.submit }}
+		
+	</form>
+</div>
+{% endblock %}
+{% block scripts %}
+	{{ super() }}
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="{{ url_for('static', filename = 'js/enter_question.js') }}"></script>
+	<script>
+	$(function() {
+	    
+		date = new Date(2015, 8, 1);
+		$("#datepicker").datepicker({defaultDate: date});
+	  });
+	  </script>
+{% endblock %}

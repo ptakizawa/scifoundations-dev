@@ -17,7 +17,7 @@
 		<a href="#" class="learning-objective-condition" title="This is the condition part of the learning objective. It defines the conditions underwhich the student should be able to meet the objective.">Given a set of histological images</a>, <a href="#" class="learning-objective-who" title="This is the who part of the learning objective. It describes for whom the learning objective is targeted.">students</a> will be able to <a href="#" class="learning-objective-verb" title="This is the verb part of the learning objective. It describes the specific action the person should be able to perform. Verbs can be chosen to vary the complexity of the learning objective">classify</a> <a href="#" class="learning-objective-content" title ="This is the content part of the learning objective. It describes the content on which the student should be able to perform a specfic task">epithelia based on the shape of the cells and the number of layers of cells</a>.
 	</div>
 	<br>
-	<a class="btn btn-primary btn-lg" href= "/enter-learning-objective" role="button">Build a Learning Objective »</a>
+	<a class="btn btn-primary btn-lg" href= "{{ url_for('main.build_learning_objective') }}" role="button">Build a Learning Objective »</a>
 	
 </div>
 {% endblock %}
